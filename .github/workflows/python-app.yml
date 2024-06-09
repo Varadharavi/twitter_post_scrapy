@@ -35,5 +35,6 @@ jobs:
 
       - name: Change directory and run script
         run: |
+          echo "ACCESS_KEY: $ACCESS_KEY"
           cd dividend_scraper
           scrapy crawl quotes
