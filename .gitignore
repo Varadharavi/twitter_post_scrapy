@@ -1,0 +1,39 @@
+.env
+# Byte-compiled / optimized Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Scraped data
+*.csv
+*.json
+*.jl
+
+# Virtual environment
+venv/
+env/
+*.venv/
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Scrapyd directory
+.scrapy
+
+# SQLite database files
+*.sqlite3
+
+# Compiled Python bytecode
+__pycache__/
+
+# Custom settings (to include local settings, uncomment next line)
+# local_settings.py
+
+# System files
+.DS_Store
