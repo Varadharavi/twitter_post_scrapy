@@ -1,0 +1,38 @@
+name: Twitter Post Dividend data extracted from MC
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch as needed
+  schedule:
+    - cron: '30 14 * * *'  # Run every weekday at 1:00 PM (UTC)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      ACCESS_KEY: ${{secrets.ACCESS_KEY}}
+      CONSUMER_KEY: ${{secrets.CONSUMER_KEY}}
+      ACCESS_SECRET: ${{secrets.ACCESS_SECRET}}
+      CONSUMER_SECRET: ${{secrets.CONSUMER_SECRET}}
+      BEARER_TOKEN: ${{secrets.BEARER_TOKEN}}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Change directory and run script
+        run: |
+          cd dividend_scraper
+          scrapy crawl quotes
